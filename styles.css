@@ -473,8 +473,58 @@ em {
 
 .solution-content {
     max-width: var(--container-narrow);
-    margin: 0 auto;
+    margin: 0 auto var(--space-2xl);
     text-align: center;
+}
+
+/* Services Preview Grid (Homepage) */
+.services-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+.services-preview-card {
+    padding: var(--space-lg);
+    background-color: var(--gray-800);
+    border-radius: 4px;
+    border: 1px solid var(--gray-700);
+    transition: all var(--transition-base);
+}
+
+.services-preview-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.services-preview-card h3 {
+    color: var(--white);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+}
+
+.services-preview-card p {
+    color: var(--gray-400);
+    font-size: 0.9375rem;
+    margin-bottom: var(--space-sm);
+}
+
+.services-preview-price {
+    font-size: 0.875rem;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+@media (max-width: 968px) {
+    .services-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .services-preview-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .solution .section-eyebrow {
@@ -1002,4 +1052,123 @@ em {
 .substack-link span {
     font-weight: 500;
     color: var(--gray-900);
+}
+
+/* ==========================================================================
+   Services Page
+   ========================================================================== */
+
+.services-intro {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    margin-bottom: var(--space-2xl);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.service-card {
+    padding: var(--space-xl);
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.1);
+}
+
+.service-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, var(--white) 0%, rgba(201, 162, 39, 0.05) 100%);
+}
+
+.service-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-xs);
+}
+
+.service-card-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.service-price {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--gold-dark);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.service-duration {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-bottom: var(--space-md);
+}
+
+.service-card > p:not(.service-duration) {
+    color: var(--gray-600);
+    flex-grow: 0;
+}
+
+.service-includes {
+    margin: var(--space-md) 0 var(--space-lg);
+    flex-grow: 1;
+}
+
+.service-includes li {
+    padding: var(--space-xs) 0;
+    padding-left: var(--space-md);
+    position: relative;
+    color: var(--gray-600);
+    font-size: 0.9375rem;
+}
+
+.service-includes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.service-card .btn {
+    align-self: flex-start;
+}
+
+.service-card-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card-header {
+        flex-direction: column;
+        gap: var(--space-xs);
+    }
+
+    .service-card-actions {
+        flex-direction: column;
+    }
+
+    .service-card-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
 }
