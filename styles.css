@@ -22,7 +22,13 @@
     --gold-light: #D4B84A;
     --gold-dark: #A68A1F;
     --gold-muted: #E8DDB5;
-    
+
+    --olive-dark: #3D4A2D;
+    --olive: #556B2F;
+    --olive-muted: #4A5540;
+    --olive-warm: #5C5A3E;
+    --olive-light: #4E5E3A;
+
     /* Typography */
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Montserrat', -apple-system, sans-serif;
@@ -425,12 +431,12 @@ em {
     padding: var(--space-xl);
     background-color: var(--gray-50);
     border-radius: 4px;
-    border-left: 3px solid var(--gold-muted);
+    border-left: 3px solid var(--olive-light);
     transition: all var(--transition-base);
 }
 
 .problem-card:hover {
-    border-left-color: var(--gold);
+    border-left-color: var(--olive-dark);
     transform: translateY(-2px);
 }
 
@@ -745,18 +751,28 @@ em {
 
 .cta {
     padding: var(--space-4xl) 0;
-    background-color: var(--gray-50);
+    background-color: var(--olive-dark);
     text-align: center;
 }
 
 .cta-title {
     margin-bottom: var(--space-sm);
+    color: var(--white);
 }
 
 .cta-subtitle {
     font-size: 1.125rem;
-    color: var(--gray-600);
+    color: var(--gray-200);
     margin-bottom: var(--space-xl);
+}
+
+.cta .btn-primary {
+    background-color: var(--white);
+    color: var(--olive-dark);
+}
+
+.cta .btn-primary:hover {
+    background-color: var(--gray-100);
 }
 
 /* ==========================================================================
@@ -764,6 +780,7 @@ em {
    ========================================================================== */
 
 .footer {
+    margin-top: var(--space-3xl);
     padding: var(--space-xl) 0;
     background-color: var(--gray-900);
     color: var(--gray-400);
