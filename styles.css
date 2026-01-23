@@ -708,8 +708,7 @@ em {
 }
 
 .about-preview-image img {
-    border-radius: 4px;
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+    /* No box-shadow or border-radius for transparent images */
 }
 
 .about-preview-text p {
@@ -963,8 +962,7 @@ em {
 }
 
 .about-hero-image img {
-    border-radius: 4px;
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+    /* No box-shadow or border-radius for transparent images */
 }
 
 .about-hero-text h1 {
