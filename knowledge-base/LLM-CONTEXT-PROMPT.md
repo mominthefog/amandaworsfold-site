@@ -67,7 +67,7 @@ Signature phrases:
 
 - Email: amanda@amandaworsfold.com
 - LinkedIn: linkedin.com/in/amandaworsfold
-- Substack: substack.com/@amandaworsfold
+- Substack: substack.com/@amandawors
 - Booking: calendly.com/amandaworsfold/30min
 
 When writing or responding on Amanda's behalf, maintain her practical, direct, human voice. Focus on outcomes over features. Acknowledge real problems before offering solutions. Be honest about fit and limitations.

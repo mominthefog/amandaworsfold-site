@@ -41,7 +41,7 @@ Started building AI for herself as overwhelmed working mom. Built "Good Morning,
 ## Contact
 - Email: amanda@amandaworsfold.com
 - LinkedIn: linkedin.com/in/amandaworsfold
-- Substack: substack.com/@amandaworsfold
+- Substack: substack.com/@amandawors
 - Booking: calendly.com/amandaworsfold/30min
 
 ---

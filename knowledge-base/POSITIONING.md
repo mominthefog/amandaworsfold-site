@@ -58,6 +58,6 @@ Built the "Good Morning, Mom" daily briefing agent that reads emails, checks cal
 ## Social Presence
 
 - **LinkedIn:** linkedin.com/in/amandaworsfold
-- **Substack:** substack.com/@amandaworsfold
+- **Substack:** substack.com/@amandawors
 - **Email:** amanda@amandaworsfold.com
 - **Booking:** calendly.com/amandaworsfold/30min
