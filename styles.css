@@ -1308,3 +1308,205 @@ em {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   Build Lab
+   ========================================================================== */
+
+.build-lab-hero {
+    padding: calc(80px + var(--space-4xl)) 0 var(--space-4xl);
+    background-color: var(--gray-900);
+    text-align: center;
+    color: var(--white);
+}
+
+.build-lab-hero .section-eyebrow {
+    color: var(--gold);
+}
+
+.build-lab-hero h1 {
+    color: var(--white);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-lg);
+}
+
+.build-lab-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--gray-300);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+}
+
+.build-lab-details {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.build-lab-detail-tag {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-200);
+    background-color: var(--gray-800);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    border: 1px solid var(--gray-700);
+}
+
+.build-lab-form {
+    padding: var(--space-4xl) 0;
+    background-color: var(--gray-50);
+    text-align: center;
+}
+
+.build-lab-form h2 {
+    margin-bottom: var(--space-md);
+}
+
+.build-lab-form p {
+    color: var(--gray-600);
+}
+
+.build-lab-register-form {
+    margin-top: var(--space-xl);
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.build-lab-register-row {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.build-lab-register-row .build-lab-register-field {
+    flex: 1;
+}
+
+.build-lab-register-field {
+    margin-bottom: var(--space-md);
+}
+
+.build-lab-register-field label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: var(--space-xs);
+}
+
+.build-lab-register-field input,
+.build-lab-register-field textarea {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--gray-800);
+    background-color: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.build-lab-register-field input:focus,
+.build-lab-register-field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.build-lab-register-form .btn {
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .build-lab-register-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+.build-lab-confirmation {
+    padding: var(--space-xl);
+    background-color: var(--white);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    margin-top: var(--space-lg);
+}
+
+.build-lab-confirmation h3 {
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.build-lab-confirmation p {
+    color: var(--gray-700);
+    margin-bottom: 0;
+}
+
+.build-lab-notify-form {
+    max-width: 480px;
+    margin: var(--space-lg) auto 0;
+}
+
+.build-lab-notify-fields {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.build-lab-notify-fields input {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--gray-800);
+    background-color: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 4px;
+}
+
+.build-lab-notify-fields input:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.build-lab-notify-confirmation p {
+    color: var(--gray-200);
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .build-lab-notify-fields {
+        flex-direction: column;
+    }
+
+    .build-lab-notify-fields .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.build-lab-form-placeholder {
+    padding: var(--space-xl);
+    background-color: var(--white);
+    border: 2px dashed var(--gray-300);
+    border-radius: 4px;
+    margin-top: var(--space-lg);
+}
+
+.build-lab-form-placeholder p {
+    margin-bottom: var(--space-xs);
+}
+
+.build-lab-form-placeholder p:last-child {
+    margin-bottom: 0;
+}
