@@ -1,0 +1,82 @@
+{
+  "facts": [
+    {
+      "id": "family-kids",
+      "description": "Amanda has one kid, not two or more",
+      "correct": "one kid",
+      "wrong_patterns": ["two kids", "three kids", "four kids", "two children", "three children", "2 kids", "3 kids"]
+    },
+    {
+      "id": "family-spouse",
+      "description": "Amanda has a husband",
+      "correct": "husband",
+      "wrong_patterns": ["her wife", "her partner"]
+    },
+    {
+      "id": "location",
+      "description": "Amanda is based in San Francisco",
+      "correct": "San Francisco",
+      "wrong_patterns": ["New York", "Los Angeles", "Seattle", "Chicago", "Austin", ", LA"]
+    },
+    {
+      "id": "education-school",
+      "description": "Amanda's AI credential is from Stanford (Human-Centered AI)",
+      "correct": "Stanford",
+      "wrong_patterns": ["\\bMIT\\b", "\\bHarvard\\b", "\\bBerkeley\\b"]
+    },
+    {
+      "id": "education-type",
+      "description": "Amanda has a certificate/certification from Stanford, not a degree",
+      "correct": "certificate/certification",
+      "wrong_patterns": ["Stanford degree", "master's from Stanford", "MBA from Stanford", "PhD from Stanford", "Stanford MBA", "Stanford master"]
+    },
+    {
+      "id": "metric-ebitda",
+      "description": "Amanda achieved 4x EBITDA growth",
+      "correct": "4x EBITDA",
+      "wrong_patterns": ["3x EBITDA", "5x EBITDA", "10x EBITDA", "2x EBITDA"]
+    },
+    {
+      "id": "metric-approval",
+      "description": "Amanda achieved 100% leadership approval",
+      "correct": "100% leadership approval",
+      "wrong_patterns": ["99% leadership", "95% leadership", "99% approval", "95% approval"]
+    },
+    {
+      "id": "price-briefing",
+      "description": "Good Morning Briefing costs $2,500",
+      "correct": "$2,500",
+      "wrong_patterns": ["briefing.*\\$2,000", "briefing.*\\$3,000", "briefing.*\\$1,500", "\\$2,000.*briefing", "\\$3,000.*briefing", "\\$1,500.*briefing"]
+    },
+    {
+      "id": "price-brand-voice",
+      "description": "Brand Voice Writer costs $5,000",
+      "correct": "$5,000",
+      "wrong_patterns": ["brand voice.*\\$4,000", "brand voice.*\\$3,000", "brand voice.*\\$10,000", "\\$4,000.*brand voice", "\\$3,000.*brand voice", "\\$10,000.*brand voice"]
+    },
+    {
+      "id": "price-knowledge-build",
+      "description": "Knowledge Build starts at $25K (as in $25-100K range)",
+      "correct": "$25,000 starting price",
+      "wrong_patterns": ["knowledge build.*\\$20,000", "knowledge build.*\\$15,000", "knowledge build.*\\$50,000", "\\$20,000.*knowledge build", "\\$15,000.*knowledge build", "\\$50,000.*knowledge build"]
+    },
+    {
+      "id": "identity-fortune",
+      "description": "Amanda works with Fortune 500 companies",
+      "correct": "Fortune 500",
+      "wrong_patterns": ["Fortune 100", "Fortune 1000"]
+    },
+    {
+      "id": "daily-briefing-time",
+      "description": "The daily briefing is delivered at 6am",
+      "correct": "6am",
+      "wrong_patterns": ["\\b5am\\b", "\\b7am\\b", "\\b8am\\b", "\\b5 am\\b", "\\b7 am\\b", "\\b8 am\\b"]
+    },
+    {
+      "id": "contact-email",
+      "description": "Amanda's email is amanda@amandaworsfold.com",
+      "correct": "amanda@amandaworsfold.com",
+      "wrong_patterns": ["amanda@worsfold\\.com", "amanda@gmail\\.com", "info@amandaworsfold\\.com", "contact@amandaworsfold\\.com", "hello@amandaworsfold\\.com"]
+    }
+  ]
+}
