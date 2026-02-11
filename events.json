@@ -1,0 +1,28 @@
+{
+  "events": [
+    {
+      "id": "build-lab",
+      "name": "Build Lab",
+      "page": "build-lab.html",
+      "type": "recurring",
+      "status": "past",
+      "date": "2026-02-12",
+      "next_date": null,
+      "description": "Free hands-on session: Build your team's AI knowledge partner",
+      "kit_form_ids": ["9044261", "9044478"],
+      "notes": "Recurring monthly session. Update dates when next session is scheduled."
+    },
+    {
+      "id": "finally-build-it",
+      "name": "Finally Build It",
+      "page": "finally-build-it.html",
+      "type": "one-time",
+      "status": "upcoming",
+      "date": "2026-03-01",
+      "next_date": null,
+      "description": "Build your AI Daily Briefing with expert support. $900, small group, virtual.",
+      "kit_form_ids": ["9051647"],
+      "notes": "One-time event. Archive page after completion."
+    }
+  ]
+}
