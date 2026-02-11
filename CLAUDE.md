@@ -118,18 +118,123 @@ Insights link is commented out. Mobile uses hamburger toggle.
 | Build Lab Waitlist | 9044478 | build-lab.html | `https://app.kit.com/forms/9044478/subscriptions` |
 | Finally Build It Waitlist | 9051647 | finally-build-it.html | `https://app.kit.com/forms/9051647/subscriptions` |
 
-### Kit API (v4)
-- **Base URL:** `https://api.kit.com/v4/`
-- **Auth:** Bearer token from `KIT_API_KEY` in `~/wit/.env`
-- **Key Endpoints:**
-  - `GET /subscribers` — list subscribers
-  - `GET /subscribers?filter[tag]=TAG_ID` — filter by tag
-  - `GET /forms` — list forms
-  - `GET /forms/{id}/subscriptions` — form subscribers
-  - `GET /tags` — list tags
-  - `POST /tags/{id}/subscribers` — tag a subscriber
-  - `GET /broadcasts` — list broadcasts
-- **Usage:** `curl -H "Authorization: Bearer $KIT_API_KEY" https://api.kit.com/v4/subscribers`
+### Embedding a Form on the Site
+Forms are created in the Kit UI (app.kit.com → Landing Pages & Forms). To embed on the site:
+```html
+<form id="[slug]-form" class="[slug]-form" action="javascript:void(0);">
+    <input type="email" placeholder="Your email" required>
+    <button type="submit">Join the Waitlist</button>
+</form>
+<script>
+document.getElementById('[slug]-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+    fetch('https://app.kit.com/forms/[KIT_FORM_ID]/subscriptions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'email_address=' + encodeURIComponent(email),
+        mode: 'no-cors'
+    }).then(() => { /* show success message */ });
+});
+</script>
+```
+After embedding, add the form to the table above and update `events.json` if event-related.
+
+### Kit API (v4) — Full Reference
+
+- **Base URL:** `https://api.kit.com/v4`
+- **Auth:** `X-Kit-Api-Key: $KIT_API_KEY` header (key stored in `~/wit/.env`)
+- **Content-Type:** `application/json` for POST/PUT requests
+- **Pagination:** Cursor-based (`after`/`before` params, `per_page` default 500, max 1000)
+
+**Load API key before any Kit call:**
+```bash
+KIT_API_KEY=$(grep KIT_API_KEY ~/wit/.env | cut -d= -f2)
+```
+
+#### Subscribers
+
+| Action | Method | Endpoint | Body/Params |
+|--------|--------|----------|-------------|
+| List all | `GET` | `/v4/subscribers` | `?status=active&include_total_count=true` |
+| Search by email | `GET` | `/v4/subscribers` | `?email_address=user@example.com` |
+| Filter by date | `GET` | `/v4/subscribers` | `?created_after=2026-01-01&created_before=2026-02-01` |
+| Get one | `GET` | `/v4/subscribers/{id}` | — |
+| Create | `POST` | `/v4/subscribers` | `{"email_address":"...", "first_name":"...", "fields":{"Last name":"..."}}` |
+| Update | `PUT` | `/v4/subscribers/{id}` | `{"email_address":"...", "first_name":"..."}` |
+| Unsubscribe | `POST` | `/v4/subscribers/{id}/unsubscribe` | `{}` |
+| List tags | `GET` | `/v4/subscribers/{id}/tags` | — |
+
+Create returns 201 (new) or 200 (existing updated). Max 140 custom fields.
+
+#### Forms
+
+| Action | Method | Endpoint | Body/Params |
+|--------|--------|----------|-------------|
+| List all | `GET` | `/v4/forms` | `?status=active&type=embed` |
+| List subscribers | `GET` | `/v4/forms/{form_id}/subscribers` | `?include_total_count=true&added_after=2026-01-01` |
+| Add subscriber | `POST` | `/v4/forms/{form_id}/subscribers` | `{"email_address":"..."}` |
+
+**Note:** Forms cannot be created via API — create them in Kit UI (app.kit.com → Landing Pages & Forms), then use the API to manage subscribers and embed on the site.
+
+#### Tags
+
+| Action | Method | Endpoint | Body/Params |
+|--------|--------|----------|-------------|
+| List all | `GET` | `/v4/tags` | — |
+| Create | `POST` | `/v4/tags` | `{"name":"Tag Name"}` |
+| Tag subscriber | `POST` | `/v4/tags/{tag_id}/subscribers` | `{"email_address":"..."}` |
+| Remove tag | `DELETE` | `/v4/tags/{tag_id}/subscribers` | `{"email_address":"..."}` |
+| List tagged subscribers | `GET` | `/v4/tags/{tag_id}/subscribers` | `?include_total_count=true` |
+
+Create returns 201 (new) or 200 (tag already exists).
+
+#### Broadcasts
+
+| Action | Method | Endpoint | Body/Params |
+|--------|--------|----------|-------------|
+| List all | `GET` | `/v4/broadcasts` | — |
+| Create draft | `POST` | `/v4/broadcasts` | See below |
+| Get one | `GET` | `/v4/broadcasts/{id}` | — |
+| Update | `PUT` | `/v4/broadcasts/{id}` | Same as create body |
+| Delete | `DELETE` | `/v4/broadcasts/{id}` | — |
+| Get stats | `GET` | `/v4/broadcasts/{id}/stats` | — |
+
+**Create broadcast body:**
+```json
+{
+  "subject": "Email subject",
+  "content": "<p>HTML content</p>",
+  "description": "Internal description",
+  "public": true,
+  "published_at": "2026-03-01T09:00:00Z",
+  "preview_text": "Preview text",
+  "send_at": "2026-03-01T14:00:00Z",
+  "subscriber_filter": [{"all": [{"type": "tag", "tag_id": 123}]}]
+}
+```
+Set `send_at` to `null` to save as draft without scheduling.
+
+#### Example curl Commands
+```bash
+# Count active subscribers
+curl -s -H "X-Kit-Api-Key: $KIT_API_KEY" \
+  "https://api.kit.com/v4/subscribers?include_total_count=true&per_page=1" | python3 -c "import sys,json; print(json.load(sys.stdin).get('pagination',{}).get('total_count','?'))"
+
+# Get Build Lab form signups
+curl -s -H "X-Kit-Api-Key: $KIT_API_KEY" \
+  "https://api.kit.com/v4/forms/9044261/subscribers?include_total_count=true&per_page=1"
+
+# Create a subscriber and tag them
+curl -X POST -H "X-Kit-Api-Key: $KIT_API_KEY" -H "Content-Type: application/json" \
+  -d '{"email_address":"new@example.com","first_name":"Jane"}' \
+  "https://api.kit.com/v4/subscribers"
+
+# Create a new tag
+curl -X POST -H "X-Kit-Api-Key: $KIT_API_KEY" -H "Content-Type: application/json" \
+  -d '{"name":"March Build Lab"}' \
+  "https://api.kit.com/v4/tags"
+```
 
 ## Event Lifecycle
 
